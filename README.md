@@ -1,5 +1,4 @@
-# Wavelet_analysis! [alt text][wavelet.]
-
+# Wavelet_analysis
 
 Wavelet_analysis is a repository of python scripts to carry out spectral decomposition
 of tiemseries using a set of wavelet basis functions. The methodology is 
