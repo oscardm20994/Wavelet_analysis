@@ -12,15 +12,10 @@ import sys
 import netCDF4
 
 
-""" Translating mfiles of the Torrence and Combo to python functions
-    1 - wavetest.m
-    2 - wave_bases.m
-    3 - wave_signif.m
-    4 - chisquare_inv.m
-    5 - chisquare_solve.m
-"""
 
 
+
+#function returns increasing powers of 2 for wavelet scale axis.
 def nextpow2(i):
     n = 2
     while n < i:
@@ -219,6 +214,12 @@ def wavelet(Y, dt, param, dj, s0, j1, mother):
     return ondaleta, wave, period, scale, coi, f
 
 
+# function to calculate a 95% confidence interval for significant
+# power exhibited by an input timeseries. This is done by comparing 
+# the wavelet spectrum of a timeseries with that of a
+# theoretical background red noise process with the same autocorrelation 
+# structure as the input series. Such a red noise series' spectra is shown
+# to be chi^2 distributed in Terrence and Compo.
 def wave_signif(Y, dt, scale1, sigtest, lag1, sig1v1, dof, mother, param):
     """CAUTION : default values"""
     import scipy
@@ -324,9 +325,6 @@ def cwt(data, dt, pad, dj, s0, j1, lag1, param, mother, name):
     param = 6
     mother = 'Morlet'
     """
-
-    #from cwt.lib_wavelet import wavelet,wave_signif
-
     variance = np.var(data)
     n = len(data)
     # Wavelet transform
@@ -380,22 +378,53 @@ def fft(data):
     sxx = sxx[int(np.ceil(n / 2.)):]
     return f, sxx
 
-# ---------------------------
-#           Ploting
-# ---------------------------
+
+#function to create set of surrogates by shuffling time series being analysed and calculating power spectra of each surrogate
+#outputs points on real power spectrum distinct to the set to a given level
+def bootstrap(Y, n, time):
+    """"
+    Input:
+    Y - time series
+    time - time array
+    n - number of bootstrap shuffles
+    param - the mother wavelet parameter
+    
+    Output:
+    [t_sig, s_sig] - significant points on the scale-time plane."""
+
+    Output:
+    ondaleta - wavelet bases at scale 10 dt
+    wave - wavelet transform of Y
+	real_result = get_result(Y, 1)[0]
+	real_spectra = real_result['power']
+	periods = real_result['period']
+	nscale = len(real_spectra[:,0])
+	ntime = len(real_spectra[0,:])
+
+	set_of_spectra = np.zeros([n,nscale,ntime])
+
+	for i in range(n):
+		print i
+		shuffled = np.copy(SSW)
+		np.random.shuffle(shuffled)
+		print shuffled
+		shuffled_spectra = get_result(shuffled, 1)[0]['power']
+		set_of_spectra[i,:,:] = shuffled_spectra
+	
+	#find mean and standard deviation of synthetic spectra set
+	mean = np.mean(set_of_spectra, axis = 0) 
+	stdev = np.std(set_of_spectra, axis = 0)
+	
+	Z_score = (real_spectra - mean)/stdev
+	
+	p = norm.cdf(Z_score)
+	
+	t_sig = time[np.where(p > 0.95)[1]]
+	s_sig = periods[np.where(p > 0.95)[0]]
+	
+	return [t_sig, s_sig]
 
 
-def levels(result, dtmin):
-    """
-    Power levels
-    """
-
-    dtmax = result['power'].max()
-    lev = []
-    for i in range(int(log2(dtmax / dtmin))):
-        dtmin = dtmin * 2
-        lev.append(dtmin)
-    return lev
 
 
 
@@ -421,7 +450,6 @@ def cross_wavelet(result1, result2, time):
     """
     wave1 = result1['wave']
     wave2 = result2['wave']
-
     cross_power = np.abs(wave1 * wave2.conjugate())
     WPS12 = (wave1 * wave2.conjugate())
     WPS1  = (wave1 * wave1.conjugate())
@@ -431,8 +459,7 @@ def cross_wavelet(result1, result2, time):
     pot_cohere = np.around(coherence**2,3) # round numbers for digits to be in interval 0 a 1
     phase_angle = np.angle(WPS12)
     
-
-
+    
     #significance for cross power, taken from methodology of Grinsted et al. 2004
     #significance depends on product of chai sqaured distributions and theoretical power spectra of each time series
     power1 = np.array(result1['fft_theor'])
