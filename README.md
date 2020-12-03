@@ -16,7 +16,7 @@ wavelet_analysis.py - script to load data, call wavelet functions and output spe
 
 [PDO_wavelet_UKESM_SON_DJF_5_yr_window.png](PDO_wavelet_UKESM_SON_DJF_5_yr_window.png) - sample output of wavelet power spectra from climate model data
 
-[cross_coherence_SSWs_PDO_SON_UKESM.png](cross_coherence_SSWs_PDO_SON_UKESM.png) - sample output of wavelet power spectra from climate model data.
+[cross_coherence_SSWs_PDO_SON_UKESM.png](cross_coherence_SSWs_PDO_SON_UKESM.png) - sample output of wavelet cross power spectra from climate model data.
 
 
 ## Usage
