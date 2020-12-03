@@ -1,7 +1,8 @@
 # Wavelet_analysis
 
 Wavelet_analysis is a repository of python scripts to carry out spectral decomposition
-of tiemseries using a set of wavelet basis functions. The methodology is discussed extensively in [Terrence and Compo et al.] (https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf).
+of tiemseries using a set of wavelet basis functions. The methodology is 
+discussed extensively in [Terrence and Compo et al.](https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf).
 
 
 ## Files
