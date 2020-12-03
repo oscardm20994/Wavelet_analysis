@@ -1,12 +1,16 @@
 # !/usr/bin/python
-# -*- coding: latin-1 -*-
-# WAVELET LIBRARY - Based on Torrence and Combo (1998)
-
+# WAVELET LIBRARY - Based on Wavelet methods outlined in Torrence and Combo (1998)
+# Examples of use of this library
 
 import numpy as np
-import pylab
-from pylab import detrend_mean
 import math
+import numpy as np
+from pylab import *
+import matplotlib.pyplot as plt
+import os
+import sys
+import netCDF4
+
 
 """ Translating mfiles of the Torrence and Combo to python functions
     1 - wavetest.m
@@ -296,70 +300,9 @@ def wave_signif(Y, dt, scale1, sigtest, lag1, sig1v1, dof, mother, param):
             signif.append(fft_theor[a1] * chisquare[a1])
     """CAUTION : missing elif(sigtest ==2)"""
     return signif, fft_theor
-    
+   
 
-
-
-# !/usr/bin/python
-# -*- coding: latin-1 -*-
-# WAVELET Torrence and Combo translate from Matlab to Python
-# author: Mabel Calim Costa
-# INPE
-# 23/01/2013
-
-"Baseado : Torrence e Combo"
-
-# data from http://paos.colorado.edu/research/wavelets/software.html
-
-import numpy as np
-import pylab
-from pylab import *
-import matplotlib.pyplot as plt
-import os
-import sys
-import netCDF4
-
-
-def load_nc(file, var, dt, date1):
-    """
-    OPEN ARCHIVE .NC
-    file = archive.nc
-    var  = variable from archive.nc
-    dt   = data sampling
-    date1= data intial time
-    """
-
-    f = netCDF4.Dataset(file, 'r+')
-    data = f.variables[var][:]
-    n = len(data)
-    time = np.arange(n) * dt + date1
-    f.close()
-    return data, time
-
-
-def load_txt(archive, dt, date1):
-    """
-    OPEN ARCHIVE .TXT/.DAT
-    archive = file.txt
-    dt      = data sampling
-    date1   = data initial time
-    """
-
-    filename = os.path.join(sys.prefix, 'lib', 'python' + sys.version[
-                            :3], 'site-packages', 'wavelet', 'lib',
-                            'wavelet', 'data', 'txt', archive)
-    if(not os.path.isfile(filename) and os.path.isfile(archive)):
-        filename = archive
-    else:
-        raise IOError(
-            'File {0} not found either here {1} or here {1}'.format(filename,
-                                                                    archive))
-    data = np.loadtxt(filename)
-    n = len(data)
-    time = np.arange(n) * dt + date1
-    return data, time
-
-
+#function used to normalise timeseries
 def normalize(data):
     """
     NORMALIZE FUNCTION by - mean/sqrt(variance)
@@ -369,6 +312,7 @@ def normalize(data):
     return data
 
 
+#continuous wavelet transform function.
 def cwt(data, dt, pad, dj, s0, j1, lag1, param, mother, name):
     """
     CONTINUOUS WAVELET TRANSFORM
@@ -420,9 +364,11 @@ def cwt(data, dt, pad, dj, s0, j1, lag1, param, mother, name):
               'dt': dt, 'fft': f, 'mother': mother, 'data': data, 'name': name, 'fft_theor': fft_theor}
     return result
 
+#call like
 # result = cwt(data_norm,0.25,1,0.25,2*0.25,7/0.25,0.72,6,'Morlet')
 
 
+#fast fourier transform of a timeseries 
 def fft(data):
     """FFT spectrum
     """
