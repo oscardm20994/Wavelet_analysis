@@ -1,29 +1,21 @@
-# Foobar
+# Wavelet_analysis
 
-Foobar is a Python library for dealing with word pluralization.
+Wavelet_analysis is a repository of python scripts to carry out spectral decomposition
+of tiemseries using a set of wavelet basis functions. The methodology is discussed extensively in [Terrence and Compo et al.] (https://psl.noaa.gov/people/gilbert.p.compo/Torrence_compo1998.pdf).
 
-## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Files
 
-```bash
-pip install foobar
-```
+wavelet_lib.py - script containing functions to compute the wavelet transform, power spectra and significance tests on a timeseries.
+
+wavelet_plot.py - functions to plot wavelet spectra and cross spectra
+
+wavelet_analysis.py - script to load data, call wavelet functions and output spectra
+
+PDO_wavelet_UKESM_SON_DJF_5_yr_window.png - sample output of wavelet power spectra from climate model data
+cross_coherence_SSWs_PDO_SON_UKESM.png - sample output of wavelet power spectra from climate model data
+
 
 ## Usage
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This repository has been used for analysis in [Dimdore-Miles et al. 2020](https://wcd.copernicus.org/preprints/wcd-2020-56/) which analyses long term variability in stratospheric circulation indices
