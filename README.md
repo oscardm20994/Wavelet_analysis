@@ -6,11 +6,11 @@ discussed extensively in [Terrence and Compo et al.](https://psl.noaa.gov/people
 
 ## Mathematical Approach
 
-The wavelet transform of a uniform 1-dimensional time series, $x$, of length $N$ and timestep $\delta t$ is given by the convolution between the series and a scaled and translated version of a wavelet function $\psi_0$ (equation \ref{wavelet_transform})
+The wavelet transform of a uniform 1-dimensional time series, x, of length N and timestep $\delta t$ is given by the convolution between the series and a scaled and translated version of a wavelet function $\psi_0$ (equation \ref{wavelet_transform})
 
 <img src="https://render.githubusercontent.com/render/math?math=W_n(s) = \sum^{N - 1}_{n' = 0} x_{n'} \psi^* \bigg[(n' - n) \frac{\delta t}{s}\bigg],">
 
-where $*$ denotes the complex conjugate and $s$ is the wavelet scale indicating the frequency of the wavelet. Varying $s$ and translating along the time scale (the index $n$), $W_n$ indicates the amplitude of signals at different scales and their variation in time. \cite{Torrence1998} suggest an approach to varying the scale s as increasing in powers of 2 according to 
+where s is the wavelet scale indicating the frequency of the wavelet. Varying s and translating along the time scale (the index n), $W_n$ indicates the amplitude of signals at different scales and their variation in time. The scale s is increased in powers of 2 according to 
 
 <img src="https://render.githubusercontent.com/render/math?math=s_j = s_0 2^{j \deltaj},          j = 0, 1, ..., J">
 
