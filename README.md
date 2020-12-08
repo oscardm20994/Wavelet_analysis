@@ -28,7 +28,7 @@ It is computationally quicker to compute the wavelet transform in discrete Fouri
 
 <img src="https://render.githubusercontent.com/render/math?math=W_n(s) = \sum^{N - 1}_{k = 0} \hat{x}_{k} \hat{\psi}^* (s\omega_k) e^{i \omega_k n \delta t},">
 
-where $\hat{x}_{k}$ and $\hat{\psi}$ are the discrete Fourier transforms of the time series $x$ (equation \ref{fourier1}) and the wavelet function (equation \ref{fourier2}) respectively,
+where \hat{x}_{k} and \hat{\psi} are the discrete Fourier transforms of the time series x and the wavelet function respectively,
 
 <img src="https://render.githubusercontent.com/render/math?math=\hat{x}_k = \frac{1}{N} \sum^{N-1}_{n = 0} x_n e^{\frac{-2\pi i k n}{N}}">
 
@@ -38,7 +38,7 @@ H(&omega<sub>k</sub>;) is the Heavyside function. The square modulus of the wave
 
 <img src="https://render.githubusercontent.com/render/math?math=x_n = \alpha x_{n - 1} + z_n,">
 
-where &alpha: is the lag-1 autocorrelation of the time series and z<sub>n is Gaussian white noise. such a process's wavelet power spectrum is &chi:<sup>2</sup> distributed and therefore can be used to define a 95\% confidence interval for any observed power. Additionally, the cross wavelet spectrum of two time series x and y with associated wavelet spectra Wx<sub>n and Wy<sub>n gives a measure of coincident power (the same period at the same timepoints) between the series. It is given by
+where &alpha; is the lag-1 autocorrelation of the time series and z<sub>n</sub> is Gaussian white noise. such a process's wavelet power spectrum is &chi; <sup>2</sup> distributed and therefore can be used to define a 95\% confidence interval for any observed power. Additionally, the cross wavelet spectrum of two time series x and y with associated wavelet spectra Wx<sub>n</sub> and Wy<sub>n</sub> gives a measure of coincident power (the same period at the same timepoints) between the series. It is given by
 
 <img src="https://render.githubusercontent.com/render/math?math=\vert W^{xy}_n(s)\vert = \vert W^{x*}_n(s) W^{y}_n(s)\vert,">
 
@@ -49,7 +49,7 @@ one is correlated with the rate-of-change of the other. As for individual power 
 <img src="https://render.githubusercontent.com/render/math?math=D\bigg(\frac{\vert W^{xy}_n(s)\vert}{\sigma_x \sigma_y} < p\bigg) = \frac{Z_\nu(p)}{\nu} \sqrt{P^x_k P^y_k},">
 
 
-where &sigma; denotes the standard deviation of the time series, Z is the confidence interval defined by p (Z = 3.999 for 95% confidence), &nu; is the degrees of freedom for a real wavelet spectrum (&nu; = 2) and P<sub>xk is the theoretical Fourier spectrum of the AR1 process. For a given wavenumber k, this can be expressed as
+where &sigma; denotes the standard deviation of the time series, Z is the confidence interval defined by p (Z = 3.999 for 95% confidence), &nu; is the degrees of freedom for a real wavelet spectrum (&nu; = 2) and P<sub>xk</sub> is the theoretical Fourier spectrum of the AR1 process. For a given wavenumber k, this can be expressed as
 
 <img src="https://render.githubusercontent.com/render/math?math=P_k = \frac{1 - \alpha^2}{\vert 1 - \alpha e^{2i\pi k} \vert^2}.">
 
