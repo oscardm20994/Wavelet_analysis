@@ -20,7 +20,7 @@ where s<sub>0</sub> is the shortest resolvable scale of a signal, J corresponds 
 
 <img src="https://render.githubusercontent.com/render/math?math=\psi^* \bigg[(n' - n) \frac{\delta t}{s}\bigg] = \bigg(\frac{\delta t}{s}\bigg)^{1/2} \psi_0\bigg[(n' - n) \frac{\delta t}{s}\bigg]">
 
-a common form of \psi<sub>0</sub> is as a Morlet wavelet, an oscillatory function enveloped by a Gaussian which is expressed as
+a common form of &psi<sub>0</sub> is as a Morlet wavelet, an oscillatory function enveloped by a Gaussian which is expressed as
 
 <img src="https://render.githubusercontent.com/render/math?math=\psi_0(p) = \pi^{-1/4} e^{i\omega_0 p} e^{\frac{p^2}{2}}.">
 
