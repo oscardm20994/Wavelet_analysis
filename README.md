@@ -28,7 +28,7 @@ It is computationally quicker to compute the wavelet transform in discrete Fouri
 
 <img src="https://render.githubusercontent.com/render/math?math=W_n(s) = \sum^{N - 1}_{k = 0} \hat{x}_{k} \hat{\psi}^* (s\omega_k) e^{i \omega_k n \delta t},">
 
-where \hat{x}_{k} and \hat{\psi} are the discrete Fourier transforms of the time series x and the wavelet function respectively,
+where \hat{x}_{k} and \hat{&psi} are the discrete Fourier transforms of the time series x and the wavelet function respectively,
 
 <img src="https://render.githubusercontent.com/render/math?math=\hat{x}_k = \frac{1}{N} \sum^{N-1}_{n = 0} x_n e^{\frac{-2\pi i k n}{N}}">
 
@@ -42,14 +42,13 @@ where &alpha; is the lag-1 autocorrelation of the time series and z<sub>n</sub> 
 
 <img src="https://render.githubusercontent.com/render/math?math=\vert W^{xy}_n(s)\vert = \vert W^{x*}_n(s) W^{y}_n(s)\vert,">
 
-where Wx<sub>n</sub> is the complex conjugate of the wavelet power spectrum of x. The complex argument of Wxy<sub>n</sub> gives the local phase difference between signals in x and y in frequency-time space. The phase relationship between the two time-series can be represented by a
+where Wx<sub>n</sub> is the complex conjugate of the wavelet power spectrum of x. The complex argument of W<sup>xy</sup><sub>n</sub> gives the local phase difference between signals in x and y in frequency-time space. The phase relationship between the two time-series can be represented by a
 vector that subtends an angle representing the phase difference: On all plots of cross spectra, arrows to the right (left) denoted signals which are in-phase and correlated (anti-correlated). Vertical arrows indicate a phase relationship of &pi;/2 between the time-series, so that the evolution of
 one is correlated with the rate-of-change of the other. As for individual power spectra, we define a confidence interval for which cross power of a larger amplitude is deemed significant (>95% confidence interval) by comparing power exhibited by actual series with a theoretical red noise process. The cross power of two such AR1 processes is theoretically distributed such that the probability of obtaining cross power greater than a set of red-noise processes is
 
 <img src="https://render.githubusercontent.com/render/math?math=D\bigg(\frac{\vert W^{xy}_n(s)\vert}{\sigma_x \sigma_y} < p\bigg) = \frac{Z_\nu(p)}{\nu} \sqrt{P^x_k P^y_k},">
 
-
-where &sigma; denotes the standard deviation of the time series, Z is the confidence interval defined by p (Z = 3.999 for 95% confidence), &nu; is the degrees of freedom for a real wavelet spectrum (&nu; = 2) and P<sub>xk</sub> is the theoretical Fourier spectrum of the AR1 process. For a given wavenumber k, this can be expressed as
+where &sigma; denotes the standard deviation of the time series, Z is the confidence interval defined by p (Z = 3.999 for 95% confidence), &nu; is the degrees of freedom for a real wavelet spectrum (&nu; = 2) and P<sub>k</sub> is the theoretical Fourier spectrum of the AR1 process. For a given wavenumber k, this can be expressed as
 
 <img src="https://render.githubusercontent.com/render/math?math=P_k = \frac{1 - \alpha^2}{\vert 1 - \alpha e^{2i\pi k} \vert^2}.">
 
