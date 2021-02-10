@@ -54,7 +54,7 @@ where &sigma; denotes the standard deviation of the time series, Z is the confid
 
 ## Files
 
-wavelet_lib.py - script containing functions to compute the wavelet transform, power spectra and significance tests on a timeseries.
+wavelet_lib.py - script containing functions to compute the wavelet transform, power spectra and significance tests on a timeseries. Functions are based on source code of the waipy package developed by Mabel Calim Costa (mabelcalim). 
 
 wavelet_plot.py - functions to plot wavelet spectra and cross spectra
 
